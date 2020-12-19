@@ -1,5 +1,7 @@
 const redis = require("redis");
 const { promisify } = require("util");
+require('dotenv').config()
+
 var emoji = require('emoji.json');
 
 (async()=>{
@@ -14,6 +16,6 @@ var emoji = require('emoji.json');
 
     console.log("length: ", emoji.length);
     for(let i=0; i<emoji.length; i++) {
-        client.set(i, emoji[i]);
+        client.set(i, JSON.stringify(emoji[i]), redis.print);
     }
 })();
