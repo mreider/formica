@@ -1,13 +1,16 @@
 # Pre-requisites
-redis
 
-node12.x
+Redis
+
+Node12.x
 
 npm
 
-apache2
+Apache2
 
 Pm2
+
+Serverless Framework
 
 # Clone repo and navigate to backend folder
 
@@ -25,6 +28,17 @@ EC2 instance security settings
 # Start app with PM2 
 `pm2 start index.js`
 
+# For Lambda
+
+Install serverless framework
+
+`npm install -g serverless`
+
+Setup profile in .aws/credentials
+
+Deploy
+
+`sls deploy --profile <profile-name>`
 
 # Frontend
 Navigate to frontend folder
