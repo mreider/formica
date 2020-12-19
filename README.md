@@ -21,10 +21,12 @@ git clone https://github.com/mreider/formica.git
 cd formica/backend
 npm install
 node redis-data-upload.js
+node index.js &
 cd ../frontend
+OUTPUT=$(dig +short myip.opendns.com @resolver1.opendns.com)
+sed -i 's/127.0.0.1/${OUTPUT}/' .env
 npm install
-cd ..
-node frontend/index.js & node backend/index.js &
+node index.js &
 ```
 
 ## EKS
