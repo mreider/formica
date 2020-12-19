@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formica</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style type="text/css">
+     
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Formica</h2>
+      <form style="width: 35%" onsubmit="event.preventDefault(); validate()">
+        <div class="form-group">
+          <label>Seconds Per Post</label>
+          <input type="number" class="form-control" id="post" />
+        </div>
+        <div class="form-group">
+          <label>Complexity</label>
+          <input type="number" class="form-control" id="complexity" />
+        </div>
+        <div class="form-group">
+          <label>Leakage</label>
+          <input type="number" class="form-control" id="leakage" />
+        </div>
+        <div class="form-group" style="display: flex; justify-content: center">
+          <input
+            type="submit"
+            class="btn btn-primary"
+            id="sub"
+            value="Submit"
+            style="width: 100%"
+          />
+        </div>
+      </form>
+    </div>
+    <div id="emoji" class="emojiiCLass">
+      <ul id="emijuUl"></ul>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
