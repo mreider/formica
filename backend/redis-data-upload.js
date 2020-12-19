@@ -19,3 +19,4 @@ var emoji = require('emoji.json');
         client.set(i, JSON.stringify(emoji[i]), redis.print);
     }
 })();
+process.exit();

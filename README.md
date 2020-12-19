@@ -1,32 +1,33 @@
-# Pre-requisites
+## What is this?
 
-Redis
+It's a little demo application for installing Dynatrace in three different scenarios:
 
-Node12.x
+- EC2 instance
+- EKS
+- Combination of EKS and AWS Lambda
 
-npm
+## EC2 instructions
 
-Apache2
+Spin up an EC2 instance. I used Lightsail with Ubuntu to speed things up a bit. Make sure ports 3000 and 3001 are open. Now SSH into the instance and run this:
 
-Pm2
+```
+sudo apt-get --assume-yes update
+curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+sudo apt-get --assume-yes install nodejs
+sudo apt-get --assume-yes install redis-server
+redis-server &
+redis-cli config set requirepass foobar
+git clone https://github.com/mreider/formica.git
+cd formica/backend
+npm install
+node redis-data-upload.js
+cd ../frontend
+npm install
+cd ..
+node frontend/index.js & node backend/index.js &
+```
 
-Serverless Framework
-
-# Clone repo and navigate to backend folder
-
-install packages
-
-`npm install`
-
-update .env (Environment Variables)
-
-`nano .env`
-
-# Open port in security settings (in case of AWS as well)
-EC2 instance security settings
-
-# Start app with PM2 
-`pm2 start index.js`
+## EKS
 
 # For Lambda
 
