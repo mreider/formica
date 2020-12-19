@@ -1,6 +1,5 @@
 var http = require('http');
-require('dotenv').config()
-var port = process.env.PORT || '3000';
+var port = process.env.BACKENDPORT || '3000';
 // import { controllerFunctions } from './functions.js';
 const functionsList = require("./functions.js");
 

@@ -11,6 +11,13 @@ It's a little demo application for installing Dynatrace in three different scena
 Spin up an EC2 instance. I used Lightsail with Ubuntu to speed things up a bit. Make sure ports 3000 and 3001 are open. Now SSH into the instance and run this:
 
 ```
+export BACKENDPORT=3000
+OUTPUT=$(dig +short myip.opendns.com @resolver1.opendns.com)
+export BACKEND=${OUTPUT}
+export FRONTENDPORT=3001
+export REDIS_PORT=6379
+export REDIS_HOST=${OUTPUT}
+export REDIS_PASSWORD=foobar
 sudo apt-get --assume-yes update
 curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
 sudo apt-get --assume-yes install nodejs
@@ -23,8 +30,6 @@ npm install
 node redis-data-upload.js
 node index.js &
 cd ../frontend
-OUTPUT=$(dig +short myip.opendns.com @resolver1.opendns.com)
-sed -i 's/127.0.0.1/${OUTPUT}/' .env
 npm install
 node index.js &
 ```
