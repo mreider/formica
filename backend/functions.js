@@ -35,7 +35,7 @@ exports.controllerFunctions = async (body) => {
         console.error("error: ", error);
     });
     const getAsync = promisify(client.get).bind(client);
-    let emoji = await getAsync(getRandomInt(20));
+    let emoji = await getAsync(getRandomInt(7));
     console.log("emoji: ", emoji);
     // client.get("1", () => {});
     var leaks = [];
