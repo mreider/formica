@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "emoji.json": "^13.1.0",
     "redis": "^3.0.2"
   },
   "devDependencies": {
