@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Formica</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"
+        rel="stylesheet">
+  <link crossorigin="anonymous"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+        rel="stylesheet">
+  <link href="style.css"
+        rel="stylesheet">
+  <style type="text/css"></style>
+</head>
+<body>
+  <div class="container">
+    <h2>Formica</h2>
+    <form onsubmit="event.preventDefault(); validate()"
+          style="width: 35%">
+      <div class="form-group">
+        <label>Seconds Per Post</label> <input class="form-control"
+             id="post"
+             type="number">
+      </div>
+      <div class="form-group">
+        <label>Complexity</label> <input class="form-control"
+             id="complexity"
+             type="number">
+      </div>
+      <div class="form-group">
+        <label>Leakage</label> <input class="form-control"
+             id="leakage"
+             type="number">
+      </div>
+      <div class="form-group"
+           style="display: flex; justify-content: center">
+        <input class="btn btn-primary"
+             id="sub"
+             style="width: 100%"
+             type="submit"
+             value="Submit">
+      </div>
+    </form>
+  </div>
+  <div class="emojiiCLass"
+       id="emoji">
+    <ul id="emijuUl"></ul>
+  </div>
+  <script>
+    let emijuUl = document.getElementById("emijuUl");
+
+  let sub = [];
+  let interval;
+  function validate() {
+  emo();
+  return true;
+  }
+
+  function emo() {
+  var post = document.getElementById("post").value;
+  console.log(post);
+  var complexity = document.getElementById("complexity").value;
+  console.log(complexity);
+  var leakage = document.getElementById("leakage").value;
+  console.log(leakage);
+  if(interval) {
+         clearInterval(interval); 
+  }
+  if (!post || !complexity || !leakage) {
+    alert("please enter all the values");
+  } else {
+        interval = setInterval(function() {
+                sendreq({
+                        "complexity": complexity,
+                        "leakage": leakage
+                });
+        }, post*1000);
+  }
+  }
+
+  function sendreq(data) {
+        console.log(data);
+        var url = "http://<%= backend %>:<%= backendport %>/";
+        fetch(url, {
+    method : "POST",
+    body: JSON.stringify(data),
+    }).then(
+                response => response.json()
+        ).then(
+                data => {
+                        console.log(data);
+                        var json = JSON.parse(data.data);
+                        var emojiLi = document.createElement("li");
+                    emojiLi.style = `display: inline; margin: .5vh 0;`;
+                    emojiLi.innerHTML = `&#x${json.codes};`;
+                    emijuUl.appendChild(emojiLi);
+                }
+        );
+  }
+
+  </script>
+</body>
+</html>
