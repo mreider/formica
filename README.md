@@ -36,6 +36,19 @@ node index.js &
 
 ## EKS
 
+First, look in the .aws directory, modify the up.sh file and create an EKS cluster as follows:
+
+```
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws configure
+cd .aws
+./up.sh
+```
+
+
+
 # For Lambda
 
 Install serverless framework

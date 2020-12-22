@@ -12,15 +12,18 @@
 # Happy Coding!
 
 service: matthew-backend
-plugins:
-  - serverless-dotenv-plugin
-# You can pin your service to only deploy with a specific Serverless version
-# Check out our docs for more details
 frameworkVersion: '2'
 
 provider:
   name: aws
   runtime: nodejs12.x
+  environment:
+    FRONTENDPORT: 3001
+    BACKENDPORT: 3000
+    BACKEND: foo
+    REDIS_HOST: foo
+    REDIS_PORT: 6379
+    REDIS_PASSWORD: foobar
 
 functions:
   LamdaFunction:
