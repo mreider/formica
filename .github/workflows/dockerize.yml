@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - uses: whoan/docker-build-with-cache-action@v5
-        name: Build & push Backend User Hub Docker image
+        name: Build & push Backend Docker image
         with:
           image_name: mreider/formica-backend
           image_tag: ${{ steps.get_version.outputs.VERSION }},latest
